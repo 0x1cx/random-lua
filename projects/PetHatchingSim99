@@ -71,7 +71,7 @@ local BubbleToggle = MainTab:CreateToggle({
     Callback = function(Value)
         if Value then
             _G.AutoClickConnection = game:GetService("RunService").Heartbeat:Connect(function()
-                    task.wait()
+                    task.wait(0.001)
                     game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Click"):FireServer()
             end)
         else
@@ -114,8 +114,10 @@ local RebirthToggle = MainTab:CreateToggle({
     Callback = function(Value)
         if Value then
             _G.AutoRebirthConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                task.wait()
                 local selectedRebirth = RebirthDropdown.CurrentOption
                 local rebirthNumber = tonumber(selectedRebirth:match("%d+%.?%d*")) or 1
+                task.wait()
                 if selectedRebirth:find("k") then
                     rebirthNumber = rebirthNumber * 1e3 -- Convert k to 1,000
                 elseif selectedRebirth:find("M") then
@@ -159,7 +161,7 @@ local RebirthToggle = MainTab:CreateToggle({
                 elseif selectedRebirth:find("∞") then
                     rebirthNumber = math.huge -- Set to infinity
                 end
-                task.wait()
+                task.wait(0.1)
                 local args = { [1] = rebirthNumber }
                 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer(unpack(args))
             end)
@@ -344,6 +346,7 @@ local AutoRankToggle = MainTab:CreateToggle({
         if Value then
             _G.AutoHatchConnection = game:GetService("RunService").Heartbeat:Connect(function()
                 task.spawn(function()
+                    task.wait(1)
                     game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("IncreaseMastery"):InvokeServer()
                 end)
             end)
