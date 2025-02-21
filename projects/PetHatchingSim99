@@ -1,30 +1,30 @@
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/main/source.lua", true))()
 
 local Window = Luna:CreateWindow({
-	Name = "Egos Hub", -- This Is Title Of Your Window
-	Subtitle = nil, -- A Gray Subtitle next To the main title.
-	LogoID = "82795327169782", -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
-	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
-	LoadingTitle = "Egos Hub", -- Header for loading screen
-	LoadingSubtitle = "by ego", -- Subtitle for loading screen
+	Name = "Egos Hub", 
+	Subtitle = nil, 
+	LogoID = "82795327169782",
+	LoadingEnabled = true,
+	LoadingTitle = "Egos Hub",
+	LoadingSubtitle = "by ego
 
 	ConfigSettings = {
-		RootFolder = 'Egos Hub', -- The Root Folder Is Only If You Have A Hub With Multiple Game Scripts and u may remove it. DO NOT ADD A SLASH
-		ConfigFolder = "Big Hub" -- The Name Of The Folder Where Luna Will Store Configs For This Script. DO NOT ADD A SLASH
+		RootFolder = 'Egos Hub', 
+		ConfigFolder = "Big Hub" 
 	},
 
-	KeySystem = false, -- As Of Beta 6, Luna Has officially Implemented A Key System!
+	KeySystem = false,
 	KeySettings = {
 		Title = "Luna Example Key",
 		Subtitle = "Key System",
 		Note = "Best Key System Ever! Also, Please Use A HWID Keysystem like Pelican, Luarmor etc. that provide key strings based on your HWID since putting a simple string is very easy to bypass",
-		SaveInRoot = false, -- Enabling will save the key in your RootFolder (YOU MUST HAVE ONE BEFORE ENABLING THIS OPTION)
-		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-		Key = {"Example Key"}, -- List of keys that will be accepted by the system, please use a system like Pelican or Luarmor that provide key strings based on your HWID since putting a simple string is very easy to bypass
+		SaveInRoot = false, 
+		SaveKey = true, 
+		Key = {"Example Key"}, 
 		SecondAction = {
-			Enabled = true, -- Set to false if you do not want a second action,
-			Type = "Link", -- Link / Discord.
-			Parameter = "" -- If Type is Discord, then put your invite link (DO NOT PUT DISCORD.GG/). Else, put the full link of your key system here.
+			Enabled = true,
+			Type = "Link", 
+			Parameter = "" 
 		}
 	}
 })
@@ -37,21 +37,23 @@ local MainTab = Window:CreateTab({
 	Name = "Farm Tab",
 	Icon = "house",
 	ImageSource = "Material",
-	ShowTitle = true -- This will determine whether the big header text in the tab will show
+	ShowTitle = true
 })
+
 
 local EggTab = Window:CreateTab({
 	Name = "Auto Open Eggs",
 	Icon = "open_in_new",
 	ImageSource = "Material",
-	ShowTitle = true -- This will determine whether the big header text in the tab will show
+	ShowTitle = true 
 })
+
 
 local TeleportTab = Window:CreateTab({
 	Name = "Teleport Tab",
 	Icon = "room",
 	ImageSource = "Material",
-	ShowTitle = true -- This will determine whether the big header text in the tab will show
+	ShowTitle = true 
 })
 
 
@@ -82,7 +84,7 @@ local BubbleToggle = MainTab:CreateToggle({
     end
 }, "AutoToggle")
 
--- Define the rebirth options
+
 local rebirthOptions = {
     "1", "5", "10", "25", "50", "100", "250", "500", "1k", "2.5k", "5k", "10k", "25k", "50k", "100k", "250k", "500k", 
     "1M", "2.5M", "5M", "10M", "25M", "50M", "100M", "250M", "500M", "1B", "2.5B", "5B", "10B", "25B", "50B", "100B", "250B", "500B", 
@@ -97,7 +99,7 @@ local rebirthOptions = {
     "1U", "2.5U", "5U", "10U", "25U", "50U", "100U", "250U", "500U", "1∞"
 }
 
--- Create the dropdown for rebirth options
+
 local RebirthDropdown = MainTab:CreateDropdown({
     Name = "Rebirth Option",
     Description = "Choose which rebirth to use",
@@ -106,7 +108,8 @@ local RebirthDropdown = MainTab:CreateDropdown({
     Callback = function(Selected) end
 }, "RebirthDropdown")
 
--- Create the auto-rebirth toggle
+
+
 local RebirthToggle = MainTab:CreateToggle({
     Name = "Auto Rebirth",
     Description = "Automatically rebirth based on the selected option",
@@ -119,47 +122,47 @@ local RebirthToggle = MainTab:CreateToggle({
                 local rebirthNumber = tonumber(selectedRebirth:match("%d+%.?%d*")) or 1
                 task.wait()
                 if selectedRebirth:find("k") then
-                    rebirthNumber = rebirthNumber * 1e3 -- Convert k to 1,000
+                    rebirthNumber = rebirthNumber * 1e3 
                 elseif selectedRebirth:find("M") then
-                    rebirthNumber = rebirthNumber * 1e6 -- Convert M to 1,000,000
+                    rebirthNumber = rebirthNumber * 1e6 
                 elseif selectedRebirth:find("B") then
-                    rebirthNumber = rebirthNumber * 1e9 -- Convert B to 1,000,000,000
+                    rebirthNumber = rebirthNumber * 1e9 
                 elseif selectedRebirth:find("T") then
-                    rebirthNumber = rebirthNumber * 1e12 -- Convert T to 1,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e12
                 elseif selectedRebirth:find("Qa") then
-                    rebirthNumber = rebirthNumber * 1e15 -- Convert Qa to 1,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e15
                 elseif selectedRebirth:find("Qi") then
-                    rebirthNumber = rebirthNumber * 1e18 -- Convert Qi to 1,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e18
                 elseif selectedRebirth:find("Sx") then
-                    rebirthNumber = rebirthNumber * 1e21 -- Convert Sx to 1,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e21
                 elseif selectedRebirth:find("Sp") then
-                    rebirthNumber = rebirthNumber * 1e24 -- Convert Sp to 1,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e24
                 elseif selectedRebirth:find("Oc") then
-                    rebirthNumber = rebirthNumber * 1e27 -- Convert Oc to 1,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e27
                 elseif selectedRebirth:find("No") then
-                    rebirthNumber = rebirthNumber * 1e30 -- Convert No to 1,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e30
                 elseif selectedRebirth:find("Dc") then
-                    rebirthNumber = rebirthNumber * 1e33 -- Convert Dc to 1,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e33
                 elseif selectedRebirth:find("Ud") then
-                    rebirthNumber = rebirthNumber * 1e36 -- Convert Ud to 1,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e36
                 elseif selectedRebirth:find("Dd") then
-                    rebirthNumber = rebirthNumber * 1e39 -- Convert Dd to 1,000,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e39
                 elseif selectedRebirth:find("Td") then
-                    rebirthNumber = rebirthNumber * 1e42 -- Convert Td to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e42
                 elseif selectedRebirth:find("Z") then
-                    rebirthNumber = rebirthNumber * 1e45 -- Convert Z to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e45
                 elseif selectedRebirth:find("Y") then
-                    rebirthNumber = rebirthNumber * 1e48 -- Convert Y to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e48
                 elseif selectedRebirth:find("X") then
-                    rebirthNumber = rebirthNumber * 1e51 -- Convert X to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e51
                 elseif selectedRebirth:find("W") then
-                    rebirthNumber = rebirthNumber * 1e54 -- Convert W to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e54
                 elseif selectedRebirth:find("V") then
-                    rebirthNumber = rebirthNumber * 1e57 -- Convert V to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e57
                 elseif selectedRebirth:find("U") then
-                    rebirthNumber = rebirthNumber * 1e60 -- Convert U to 1,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000
+                    rebirthNumber = rebirthNumber * 1e60
                 elseif selectedRebirth:find("∞") then
-                    rebirthNumber = math.huge -- Set to infinity
+                    rebirthNumber = math.huge 
                 end
                 task.wait(0.1)
                 local args = { [1] = rebirthNumber }
@@ -183,16 +186,17 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 local mainGui = playerGui:WaitForChild("Main")
-
 local leftHolder = mainGui:WaitForChild("LeftHolder")
 local rightHolder = mainGui:WaitForChild("RightHolder")
 local bottomHolder = mainGui:WaitForChild("BottomHolder")
+
 
 local desiredPositions = {
     Left = UDim2.new(0, 0, 0.5, 0),
     Right = UDim2.new(1, 0, 0.5, 0),
     Bottom = UDim2.new(0.5, 0, 1, 0)
 }
+
 
 local function enforcePosition(element, desiredPosition)
     element:GetPropertyChangedSignal("Position"):Connect(function()
@@ -201,6 +205,7 @@ local function enforcePosition(element, desiredPosition)
         end
     end)
 end
+
 
 enforcePosition(leftHolder, desiredPositions.Left)
 enforcePosition(rightHolder, desiredPositions.Right)
@@ -253,8 +258,7 @@ local eggOptions = {
 }
 
 
-local selectedEgg = eggOptions[1] -- Default selection
-
+local selectedEgg = eggOptions[1]
 local EggDropdown = EggTab:CreateDropdown({
     Name = "Select Egg",
     Description = "Choose which egg to hatch",
@@ -265,8 +269,10 @@ local EggDropdown = EggTab:CreateDropdown({
     end
 }, "EggDropdown")
 
+
 local hatchModes = { "Single", "Triple" }
-local selectedHatchMode = "Triple" -- Default to Triple
+local selectedHatchMode = "Triple" 
+
 
 local HatchModeDropdown = EggTab:CreateDropdown({
     Name = "Hatch Mode",
@@ -277,6 +283,7 @@ local HatchModeDropdown = EggTab:CreateDropdown({
         selectedHatchMode = Selected
     end
 }, "HatchModeDropdown")
+
 
 local AutoHatchToggle = EggTab:CreateToggle({
     Name = "Auto Hatch",
@@ -311,7 +318,6 @@ local AutoHatchToggle = EggTab:CreateToggle({
 
 
 
--- List of island names exactly as used by the remote:
 local islandOptions = {
     "100K Event",
     "600K Event",
@@ -332,20 +338,19 @@ local islandOptions = {
     "Winter"
 }
 
-local selectedIsland = islandOptions[1] -- Default selection
 
--- Dropdown for selecting the island
+local selectedIsland = islandOptions[1] 
 local IslandDropdown = TeleportTab:CreateDropdown({
     Name = "Select Island",
     Description = "Choose which island to teleport to",
     Options = islandOptions,
     CurrentOption = selectedIsland,
     Callback = function(Selected)
-        selectedIsland = Selected -- Update selected island
+        selectedIsland = Selected 
     end
 }, "IslandDropdown")
 
--- Button for executing the teleport
+
 local TeleportButton = TeleportTab:CreateButton({
     Name = "Click To Teleport",
     Description = nil, 
@@ -358,10 +363,6 @@ local TeleportButton = TeleportTab:CreateButton({
         end
     end
 })
-
-
-
--- game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("IncreaseMastery"):InvokeServer()
 
 
 local AutoRankToggle = MainTab:CreateToggle({
