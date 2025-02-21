@@ -71,6 +71,7 @@ local BubbleToggle = MainTab:CreateToggle({
     Callback = function(Value)
         if Value then
             _G.AutoClickConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                    task.wait()
                     game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Click"):FireServer()
             end)
         else
@@ -158,6 +159,7 @@ local RebirthToggle = MainTab:CreateToggle({
                 elseif selectedRebirth:find("∞") then
                     rebirthNumber = math.huge -- Set to infinity
                 end
+                task.wait()
                 local args = { [1] = rebirthNumber }
                 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer(unpack(args))
             end)
@@ -256,6 +258,7 @@ local AutoHatchToggle = EggTab:CreateToggle({
         if Value then
             _G.AutoHatchConnection = game:GetService("RunService").Heartbeat:Connect(function()
                 task.spawn(function()
+                    task.wait()
                     local args = {
                         [1] = selectedEgg,
                         [2] = selectedHatchMode
