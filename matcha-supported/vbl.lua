@@ -1,3 +1,5 @@
+wait(1)
+
 local allowedgames = {
     [6931042565] = true
 }
