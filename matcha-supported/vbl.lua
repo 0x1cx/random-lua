@@ -1,3 +1,12 @@
+local allowedgames = {
+    [6931042565] = true
+}
+
+if not allowedgames[game.GameId] then
+    warn("Game not supported")
+    return
+end
+
 -- This script was generated using the MoonVeil Obfuscator v1.4.5 [https://moonveil.cc]
 
 local N,Ba,j,c,M,pb=pairs,bit32.bxor,getmetatable,type
